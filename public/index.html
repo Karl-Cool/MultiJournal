@@ -14,12 +14,7 @@
 
 <body>
     <input ng-model="logintext" />
-    <div ng-app="PopupDemo" ng-controller="PopupDemoCont">
-        <div>
-            <h2 class="text-center">Angularjs-Popup</h2>
-            <button ng-click="open()" class="btn btn-warning">Simple Popup</button>
-        </div>
-    </div>
+
     <div ng-controller="postCtrl" data-ng-init="loadPosts()">
         <br>
         <div ng-repeat="post in postsList">

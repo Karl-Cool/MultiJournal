@@ -13,16 +13,6 @@ var mainapp = angular.module('mainapp', []);
 var storage = firebase.app().storage("gs://multijournal-1f8ab.appspot.com/");
 var storageRef = storage.ref();
 var currentUid = null;
-angular.module('PopupDemo', ['ui.bootstrap']);
-
-angular.module('PopupDemo').controller('PopupDemoCont', ['$scope','$modal',function ($scope, $modal) {
-    $scope.open = function () {
-    console.log('opening pop up');
-    var modalInstance = $modal.open({
-    templateUrl: 'writePost.html',
-    });
-    }
-    }]);
 
 mainapp.controller('mainCtrl', function ($scope) {
     $scope.postsList = [];
