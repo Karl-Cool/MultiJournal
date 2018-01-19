@@ -15,7 +15,6 @@ var storageRef = storage.ref();
 
 mainapp.controller('mainCtrl', function ($scope) {
     $scope.postsList = [];
-
     var imagesRef = storageRef.child('Blogphotos');
     var fileName = 'firstday.jpg';
     var spaceRef = imagesRef.child(fileName);
