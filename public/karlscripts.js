@@ -45,7 +45,11 @@ mainapp.controller('mainCtrl', function ($scope) {
 mainapp.controller('logOutCtrl', function ($scope) {
     $scope.logOut = function () {
         currentUid = null;
-        window.location.href = "index.html";
+        firebase.auth().signOut().then(function() {
+            console.log("Sign out successful!");
+            window.location.href = "index.html";
+        });
+        
     }
 });
 
