@@ -46,11 +46,13 @@ mainapp.controller('mainCtrl', function ($scope) {
 mainapp.controller('logOutCtrl', function ($scope) {
     $scope.logOut = function () {
         currentUid = null;
-        firebase.auth().signOut().then(function() {
+        firebase.auth().signOut().then(function () {
             console.log("Sign out successful!");
             window.location.href = "index.html";
+        }, function (error) {
+            console.log("Error with logout");
         });
-        
+
     }
 });
 
