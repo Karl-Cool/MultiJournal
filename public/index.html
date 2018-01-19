@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html ng-app="mainapp" ng-controller="mainCtrl">
+
 <head>
     <meta charset="utf-8">
     <title>MultiJournal</title>
@@ -13,10 +14,12 @@
 
 <body>
     <input ng-model="logintext" />
-    <div ng-controller="PopupDemoCont">
-        <h2 class="text-center">Angularjs-Popup</h2>
-        <button ng-click="open()" class="btn btn-warning">Simple Popup</button>
+    <div ng-app="PopupDemo">
+        <div ng-controller="PopupDemoCont">
+            <h2 class="text-center">Angularjs-Popup</h2>
+            <button ng-click="open()" class="btn btn-warning">Simple Popup</button>
         </div>
+    </div>
     <div ng-controller="postCtrl" data-ng-init="loadPosts()">
         <!-- <button ng-click="loadPosts()">Load Posts</button> -->
         <br>
@@ -25,7 +28,9 @@
                 <div class="whiteTransparent">
                     <div class="blogTitle">{{post.title}}</div>
                     <br>
-                    <div class="blogContent"><pre>{{post.content}}</pre></div>
+                    <div class="blogContent">
+                        <pre>{{post.content}}</pre>
+                    </div>
                     <br>
                     <div class="blogName">{{post.name}}</div>
                     <br>
