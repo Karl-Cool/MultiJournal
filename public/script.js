@@ -52,7 +52,6 @@ mainapp.controller('logOutCtrl', function ($scope) {
         }, function (error) {
             console.log("Error with logout");
         });
-
     }
 });
 
@@ -71,7 +70,6 @@ mainapp.controller('inputCtrl', function ($scope) {
         $scope.content = "";
         $scope.title = "";
     }
-
 });
 
 mainapp.controller('postCtrl', function ($scope, $sce) {
@@ -91,10 +89,8 @@ mainapp.controller('postCtrl', function ($scope, $sce) {
                 }
                 $scope.postsList.push(blogPost);
             });
-
         })
     }
-
 });
 
 mainapp.controller('fixCtrl', function ($scope, resultsFactory) {
