@@ -12,8 +12,6 @@
 </head>
 
 <body>
-  <h1>Congrats you're done! Now get back to what you love building.</h1>
-  <input ng-model="logintext2" />
   <button ng-controller="logOutCtrl" ng-click="logOut()">LogOut</button>
   <div ng-controller="inputCtrl">
     <form name="newPostForm">
@@ -26,8 +24,6 @@
       <br> Name:
       <br>
       <input ng-model="name" required type="text" name="name" />
-      <br>
-
       <br>
       <button id="submit" ng-click="createPost(title+content+name)" ng-disabled="newPostForm.$invalid">Submit Post</button>
     </form>
