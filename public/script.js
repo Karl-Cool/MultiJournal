@@ -37,6 +37,8 @@ mainapp.controller('mainCtrl', function ($scope) {
             // Sign out operation. Reset the current user UID.  
             currentUid = null;
             console.log("no user signed in");
+            console.log("user id = null");
+            window.location.href = "index.html";
         }
     });
 
