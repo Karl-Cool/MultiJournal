@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="mainapp" ng-controller="mainCtrl"  data-ng-init="loadPosts()">
 
 <head>
     <meta charset="utf-8">
@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <div ng-app="inputapp" ng-controller="inputCtrl">
+    <div ng-controller="inputCtrl">
         Title:
         <br>
         <input ng-model="title" required type="text" name="title" />
@@ -25,7 +25,7 @@
         <br>
         <button ng-click="createPost(title+content+name)">Submit Post</button>
     </div>
-    <div ng-app="postapp" ng-controller="postCtrl" data-ng-init="loadPosts()">
+    <div ng-controller="postCtrl">
         <button ng-click="loadPosts()">Load Posts</button>
         <br>
         <div ng-repeat="post in postsList">
@@ -42,9 +42,6 @@
         </div>
 
     </div>
-    </div>
-
-
 </body>
 
 </html>

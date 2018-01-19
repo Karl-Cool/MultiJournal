@@ -8,14 +8,17 @@ var config = {
 };
 firebase.initializeApp(config);
 var database = firebase.database();
-var inputapp = angular.module('inputapp', []);
-var postapp = angular.module('postapp', []);
+var mainapp = angular.module('mainapp', []);
 
-inputapp.controller('inputCtrl', function ($scope) {
-
+mainapp.controller('mainCtrl', function ($scope) {
     $scope.postsList = [
         // {title:"Sample title", content:"Sample content", name:"Hasse Aro"}
     ];
+});
+
+mainapp.controller('inputCtrl', function ($scope) {
+
+
     $scope.createPost = function () {
         var ref = database.ref('posts');
         var blogpost = {
@@ -27,7 +30,7 @@ inputapp.controller('inputCtrl', function ($scope) {
     }
 });
 
-postapp.controller('postCtrl', function ($scope) {
+mainapp.controller('postCtrl', function ($scope) {
     $scope.loadPosts = function () {
         var ref = database.ref('posts');
         ref.on("value", function (snapshot) {
@@ -42,6 +45,5 @@ postapp.controller('postCtrl', function ($scope) {
             });
 
         })
-    },
-        angular.element(document).ready
+    }
 });
