@@ -39,7 +39,7 @@ mainapp.controller('mainCtrl', function ($scope) {
             console.log("no user signed in");
             console.log("user id = null");
 
-            if(window.location.href == "writePost.html") {
+            if(window.location.href == "https://multijournal-1f8ab.firebaseapp.com/writePost.html") {
                 
                 console.log("Sidan stämmer")
                 window.location.href = "index.html";
