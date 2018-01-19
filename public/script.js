@@ -32,6 +32,7 @@ mainapp.controller('mainCtrl', function ($scope) {
             // Update the current user UID.  
             currentUid = user.uid;
             $scope.logintext = user.displayName;
+            $scope.logintext2 = user.displayName;
         } else {
             // Sign out operation. Reset the current user UID.  
             currentUid = null;

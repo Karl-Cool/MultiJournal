@@ -1,41 +1,24 @@
-<!DOCTYPE html>  
- <html ng-app="mainapp" lang="en" ng-init="checkAuth()">  
- <head>  
-   <title>Write a blogpost!</title>  
-   <meta charset="UTF-8">  
- </head>  
- <!-- Below is the initialization snippet for my Firebase project. It will vary for each project -->  
- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
- <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>  
- <script src="script.js"></script>
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"></link>
- <link rel="stylesheet" href="site.css"></link>
- <body>  
- <!-- A simple example script to add text to the page that displays the user's Display Name and Email -->  
- <!-- <script>  
- // Track the UID of the current user.  
- var currentUid = null;  
- firebase.auth().onAuthStateChanged(function(user) {  
-  // onAuthStateChanged listener triggers every time the user ID token changes.  
-  // This could happen when a new user signs in or signs out.  
-  // It could also happen when the current user ID token expires and is refreshed.  
-  if (user && user.uid != currentUid) {  
-   // Update the UI when a new user signs in.  
-   // Otherwise ignore if this is a token refresh.  
-   // Update the current user UID.  
-   currentUid = user.uid;
-  } else {  
-   // Sign out operation. Reset the current user UID.  
-   currentUid = null;  
-   console.log("no user signed in");  
-  }  
- });  
- </script>   -->
- <h1>Congrats you're done! Now get back to what you love building.</h1>  
- <input ng-model="logintext" />
- <button ng-controller="logOutCtrl" ng-click="logOut()">LogOut</button>
- <div ng-controller="inputCtrl">
-  <form name="newPostForm">
+<!DOCTYPE html>
+<html ng-app="mainapp" ng-controller="mainCtrl">
+
+<head>
+  <title>Write a blogpost!</title>
+  <meta charset="UTF-8">
+
+  <!-- Below is the initialization snippet for my Firebase project. It will vary for each project -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" href="site.css"></link>
+</head>
+
+<body>
+  <h1>Congrats you're done! Now get back to what you love building.</h1>
+  <input ng-model="logintext2" />
+  <button ng-controller="logOutCtrl" ng-click="logOut()">LogOut</button>
+  <div ng-controller="inputCtrl">
+    <form name="newPostForm">
       Title:
       <br>
       <input ng-model="title" required type="text" name="title" />
@@ -49,7 +32,8 @@
 
       <br>
       <button id="submit" ng-click="createPost(title+content+name)" ng-disabled="newPostForm.$invalid">Submit Post</button>
-  </form>
-</div>
- </body>
- </html>
+    </form>
+  </div>
+</body>
+
+</html>
