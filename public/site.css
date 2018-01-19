@@ -23,7 +23,8 @@ textarea.ng-invalid {
 }
 .blogContent{
     text-align: left;
-    width: 280px;
+    max-width: 280px;
+    overflow-x: hidden !important;
 }
 .blogName{
     font: italic 12px/30px Georgia, serif;
