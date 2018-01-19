@@ -23,24 +23,16 @@ mainapp.controller('mainCtrl', function ($scope) {
         }
     },
     firebase.auth().onAuthStateChanged(function (user) {
-        // onAuthStateChanged listener triggers every time the user ID token changes.  
-        // This could happen when a new user signs in or signs out.  
-        // It could also happen when the current user ID token expires and is refreshed.  
         if (user && user.uid != currentUid) {
-            // Update the UI when a new user signs in.  
-            // Otherwise ignore if this is a token refresh.  
-            // Update the current user UID.  
             currentUid = user.uid;
             $scope.logintext = user.displayName;
             $scope.logintext2 = user.displayName;
         } else {
-            // Sign out operation. Reset the current user UID.  
             currentUid = null;
             console.log("no user signed in");
             console.log("user id = null");
 
-            if(window.location.href == "https://multijournal-1f8ab.firebaseapp.com/writePost.html") {
-                
+            if(window.location.href == "https://multijournal-1f8ab.firebaseapp.com/writePost.html") { 
                 console.log("Sidan stämmer")
                 window.location.href = "index.html";
             }
