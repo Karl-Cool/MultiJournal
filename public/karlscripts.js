@@ -16,7 +16,11 @@ var currentUid = null;
 
 mainapp.controller('mainCtrl', function ($scope) {
     $scope.postsList = [];
-
+    $scope.checkAuth = function () {
+        if(currentUid == null){
+            window.location.href = "index.html";
+        }
+    },
     firebase.auth().onAuthStateChanged(function (user) {
         // onAuthStateChanged listener triggers every time the user ID token changes.  
         // This could happen when a new user signs in or signs out.  
