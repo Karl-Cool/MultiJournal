@@ -32,5 +32,22 @@
  </script>  
  <h1>Congrats you're done! Now get back to what you love building.</h1>  
  <input ng-readonly="true" ng-model="logintext" value="INTE INLOGGAD"/>
+ <div ng-controller="inputCtrl">
+  <form name="newPostForm">
+      Title:
+      <br>
+      <input ng-model="title" required type="text" name="title" />
+      <br> Content:
+      <br>
+      <textarea ng-model="content" required rows="4" cols="40" name="content"></textarea>
+      <br> Name:
+      <br>
+      <input ng-model="name" required type="text" name="name" />
+      <br>
+
+      <br>
+      <button id="submit" ng-click="createPost(title+content+name)" ng-disabled="newPostForm.$invalid">Submit Post</button>
+  </form>
+</div>
  </body>
  </html>
