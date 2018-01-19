@@ -4,8 +4,6 @@
 <head>
   <title>Write a blogpost!</title>
   <meta charset="UTF-8">
-
-  <!-- Below is the initialization snippet for my Firebase project. It will vary for each project -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
   <script src="script.js"></script>
@@ -14,8 +12,6 @@
 </head>
 
 <body>
-  <h1>Congrats you're done! Now get back to what you love building.</h1>
-  <input ng-model="logintext2" />
   <button ng-controller="logOutCtrl" ng-click="logOut()">LogOut</button>
   <div ng-controller="inputCtrl">
     <form name="newPostForm">
@@ -28,8 +24,6 @@
       <br> Name:
       <br>
       <input ng-model="name" required type="text" name="name" />
-      <br>
-
       <br>
       <button id="submit" ng-click="createPost(title+content+name)" ng-disabled="newPostForm.$invalid">Submit Post</button>
     </form>
