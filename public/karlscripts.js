@@ -39,7 +39,7 @@ mainapp.controller('mainCtrl', function ($scope) {
     var spaceRef = imagesRef.child(fileName);
     var imgurl = spaceRef.getDownloadURL().then(function (url) {
         console.log(url);
-        document.querySelector('img').src = url;
+        //document.querySelector('img').src = url;
     })
 });
 mainapp.controller('logOutCtrl', function ($scope) {
