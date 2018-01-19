@@ -8,6 +8,8 @@
  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
  <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>  
  <script src="karlscripts.js"></script>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"></link>
+ <link rel="stylesheet" href="site.css"></link>
  <body>  
  <!-- A simple example script to add text to the page that displays the user's Display Name and Email -->  
  <script>  
@@ -31,6 +33,7 @@
  </script>  
  <h1>Congrats you're done! Now get back to what you love building.</h1>  
  <input ng-readonly="true" ng-model="logintext" value="INTE INLOGGAD"/>
+ <button ng-controller="logOutCtrl" ng-click="logOut()">LogOut</button>
  <div ng-controller="inputCtrl">
   <form name="newPostForm">
       Title:

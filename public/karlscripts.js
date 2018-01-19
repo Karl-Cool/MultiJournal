@@ -12,10 +12,11 @@ var database = firebase.database();
 var mainapp = angular.module('mainapp', []);
 var storage = firebase.app().storage("gs://multijournal-1f8ab.appspot.com/");
 var storageRef = storage.ref();
+var currentUid = null;
 
 mainapp.controller('mainCtrl', function ($scope) {
     $scope.postsList = [];
-    var currentUid = null;
+
     firebase.auth().onAuthStateChanged(function (user) {
         // onAuthStateChanged listener triggers every time the user ID token changes.  
         // This could happen when a new user signs in or signs out.  
@@ -32,6 +33,7 @@ mainapp.controller('mainCtrl', function ($scope) {
             console.log("no user signed in");
         }
     });
+
     var imagesRef = storageRef.child('Blogphotos');
     var fileName = 'firstday.jpg';
     var spaceRef = imagesRef.child(fileName);
@@ -39,6 +41,12 @@ mainapp.controller('mainCtrl', function ($scope) {
         console.log(url);
         document.querySelector('img').src = url;
     })
+});
+mainapp.controller('logOutCtrl', function ($scope) {
+    $scope.logOut = function () {
+        currentUid = null;
+        window.location.href = "index.html";
+    }
 });
 
 mainapp.controller('inputCtrl', function ($scope) {
