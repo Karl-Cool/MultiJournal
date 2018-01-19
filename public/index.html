@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <img height="300" width="500">
     <div ng-controller="inputCtrl">
         <form name="newPostForm">
             Title:
@@ -22,6 +23,8 @@
             <br> Name:
             <br>
             <input ng-model="name" required type="text" name="name" />
+            <br>
+
             <br>
             <button id="submit" ng-click="createPost(title+content+name)" ng-disabled="newPostForm.$invalid">Submit Post</button>
         </form>

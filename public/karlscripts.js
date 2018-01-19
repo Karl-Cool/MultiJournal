@@ -6,12 +6,23 @@ var config = {
     storageBucket: "multijournal-1f8ab.appspot.com",
     messagingSenderId: "1075543197778"
 };
+
 firebase.initializeApp(config);
 var database = firebase.database();
 var mainapp = angular.module('mainapp', []);
+var storage = firebase.app().storage("gs://multijournal-1f8ab.appspot.com/");
+var storageRef = storage.ref();
 
 mainapp.controller('mainCtrl', function ($scope) {
     $scope.postsList = [];
+
+    var imagesRef = storageRef.child('Blogphotos');
+    var fileName = 'firstday.jpg';
+    var spaceRef = imagesRef.child(fileName);
+    var imgurl = spaceRef.getDownloadURL().then(function(url){
+        console.log(url);
+        document.querySelector('img').src = url;
+    })
 });
 
 mainapp.controller('inputCtrl', function ($scope) {
