@@ -29,7 +29,7 @@ textarea.ng-invalid {
 pre {
     display: flex;
     white-space: normal;
-    word-break: break-word;
+    word-break: break-all;
     }
 .blogName{
     font: italic 12px/30px Georgia, serif;
