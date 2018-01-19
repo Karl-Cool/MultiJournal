@@ -6,13 +6,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
     <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"></link>
     <link rel="stylesheet" href="site.css"></link>
 </head>
 
 <body>
     <input ng-model="logintext" />
-    
+    <div ng-controller="PopupDemoCont">
+        <h2 class="text-center">Angularjs-Popup</h2>
+        <button ng-click="open()" class="btn btn-warning">Simple Popup</button>
+        </div>
     <div ng-controller="postCtrl" data-ng-init="loadPosts()">
         <!-- <button ng-click="loadPosts()">Load Posts</button> -->
         <br>
