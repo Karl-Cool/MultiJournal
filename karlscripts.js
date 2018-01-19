@@ -11,14 +11,10 @@ var database = firebase.database();
 var mainapp = angular.module('mainapp', []);
 
 mainapp.controller('mainCtrl', function ($scope) {
-    $scope.postsList = [
-        // {title:"Sample title", content:"Sample content", name:"Hasse Aro"}
-    ];
+    $scope.postsList = [];
 });
 
 mainapp.controller('inputCtrl', function ($scope) {
-
-
     $scope.createPost = function () {
         var ref = database.ref('posts');
         var blogpost = {
@@ -47,3 +43,34 @@ mainapp.controller('postCtrl', function ($scope) {
         })
     }
 });
+
+mainapp.controller('fixCtrl', function($scope, resultsFactory) {
+  
+    $scope.results = [{txt: 'Loading...'}];
+    resultsFactory.all().then(
+      function(res){
+        $scope.results = res;
+      },
+      function(err){
+        console.error(err);
+      }
+    );
+  })
+  
+  mainapp.factory('resultsFactory', function($http, $timeout, $q) { 
+    var results = {};  
+    
+    function _all(){
+      var d = $q.defer();
+        $timeout(function(){
+              d.resolve($scope.postsList);
+       }, 1000); 
+    
+      return d.promise;       
+    }
+    
+    results.all = _all;
+    return results;
+  });
+
+

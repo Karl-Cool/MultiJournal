@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="mainapp" ng-controller="mainCtrl"  data-ng-init="loadPosts()">
+<html ng-app="mainapp" ng-controller="mainCtrl">
 
 <head>
     <meta charset="utf-8">
@@ -25,8 +25,8 @@
         <br>
         <button ng-click="createPost(title+content+name)">Submit Post</button>
     </div>
-    <div ng-controller="postCtrl">
-        <button ng-click="loadPosts()">Load Posts</button>
+    <div ng-controller="postCtrl" data-ng-init="loadPosts()">
+        <!-- <button ng-click="loadPosts()">Load Posts</button> -->
         <br>
         <div ng-repeat="post in postsList">
             <div class="blogPost alert alert-primary">
@@ -36,6 +36,21 @@
                     <div class="blogContent">{{post.content}}</div>
                     <br>
                     <div class="blogName">{{post.name}}</div>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div ng-controller="fixCtrl">
+        <div ng-repeat="res in results">
+            <div class="blogPost alert alert-primary">
+                <div class="whiteTransparent">
+                    <div class="blogTitle">{{res.title}}</div>
+                    <br>
+                    <div class="blogContent">{{res.content}}</div>
+                    <br>
+                    <div class="blogName">{{res.name}}</div>
                     <br>
                 </div>
             </div>
