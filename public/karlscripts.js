@@ -42,6 +42,7 @@ mainapp.controller('mainCtrl', function ($scope) {
         //document.querySelector('img').src = url;
     })
 });
+
 mainapp.controller('logOutCtrl', function ($scope) {
     $scope.logOut = function () {
         currentUid = null;
