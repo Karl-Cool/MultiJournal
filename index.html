@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>MultiJournal</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+    <script src="karlscripts.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="site.css"></link>
+</head>
+
+<body>
+    <div ng-app="inputapp" ng-controller="inputCtrl">
+        Title:
+        <br>
+        <input ng-model="title" required type="text" name="title" />
+        <br> Content:
+        <br>
+        <textarea ng-model="content" required rows="4" cols="40" name="content"></textarea>
+        <br> Name:
+        <br>
+        <input ng-model="name" required type="text" name="name" />
+        <br>
+        <button ng-click="createPost(title+content+name)">Submit Post</button>
+    </div>
+    <div ng-app="postapp" ng-controller="postCtrl" data-ng-init="loadPosts()">
+        <button ng-click="loadPosts()">Load Posts</button>
+        <br>
+        <div ng-repeat="post in postsList">
+            <div class="blogPost alert alert-primary">
+                <div class="whiteTransparent">
+                    <div class="blogTitle">{{post.title}}</div>
+                    <br>
+                    <div class="blogContent">{{post.content}}</div>
+                    <br>
+                    <div class="blogName">{{post.name}}</div>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+
+</body>
+
+</html>

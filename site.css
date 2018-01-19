@@ -1,0 +1,35 @@
+input.ng-invalid {
+    border-color: red;
+    border-width: 1px;
+}
+input {
+
+    margin-bottom: 4px;
+}
+
+textarea.ng-invalid {
+    border-color: red;
+}
+.blogPost{
+    border-style: solid;
+    border-width: 1px;
+    width: 300px;
+    padding: 5px;
+    margin: 2px 2px 8px 2px;
+}
+.blogTitle{
+    font-weight: bold;
+    float: left;
+}
+.blogContent{
+    text-align: center;
+}
+.blogName{
+    font: italic 12px/30px Georgia, serif;
+    float: right;
+}
+.whiteTransparent{
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    padding: 5px;
+}
