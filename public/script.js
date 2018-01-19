@@ -39,7 +39,7 @@ mainapp.controller('mainCtrl', function ($scope) {
             console.log("no user signed in");
             console.log("user id = null");
 
-            if(windwo.location == "writePost.html") {
+            if(window.location == "writePost.html") {
                 window.location.href = "index.html";
             }
         }
