@@ -26,9 +26,11 @@ textarea.ng-invalid {
     max-width: 280px;
     overflow-x: hidden !important;
 }
-.pre{
-    overflow-x: hidden !important;
-}
+pre {
+    display: flex;
+    white-space: normal;
+    word-break: break-word;
+    }
 .blogName{
     font: italic 12px/30px Georgia, serif;
     float: right;
