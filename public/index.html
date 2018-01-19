@@ -45,7 +45,7 @@
     </div>
     <div ng-controller="fixCtrl">
         <div ng-repeat="res in results">
-            <div class="blogPost alert alert-primary">
+            <div ng-if="blogpostdiv = false" class="blogPost alert alert-primary">
                 <div class="whiteTransparent">
                     <div class="blogTitle">{{res.title}}</div>
                     <br>

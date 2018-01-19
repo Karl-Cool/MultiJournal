@@ -75,8 +75,7 @@ mainapp.factory('resultsFactory', function ($http, $timeout, $q) {
         var d = $q.defer();
         $timeout(function () {
             d.resolve(mainapp.postsList);
-        }, 1000);
-
+        }, 2000);
         return d.promise;
     }
 
