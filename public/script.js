@@ -13,6 +13,7 @@ var mainapp = angular.module('mainapp', []);
 var storage = firebase.app().storage("gs://multijournal-1f8ab.appspot.com/");
 var storageRef = storage.ref();
 var currentUid = null;
+var userName = "";
 
 mainapp.controller('mainCtrl', function ($scope) {
     $scope.postsList = [];
@@ -27,6 +28,7 @@ mainapp.controller('mainCtrl', function ($scope) {
             currentUid = user.uid;
             $scope.logintext = user.displayName;
             $scope.logintext2 = user.displayName;
+            userName = user.displayName;
         } else {
             currentUid = null;
             console.log("no user signed in");
@@ -66,14 +68,15 @@ mainapp.controller('inputCtrl', function ($scope) {
         var blogpost = {
             title: $scope.title,
             content: $scope.content,
-            name: $scope.name
+            name: userName
         }
         console.log(blogpost);
         ref.push(blogpost);
 
-        $scope.name = "";
         $scope.content = "";
         $scope.title = "";
+
+        window.location.href = "index.html";
     }
 });
 

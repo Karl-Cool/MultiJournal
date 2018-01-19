@@ -23,9 +23,7 @@
       <textarea ng-model="content" required rows="4" cols="40" name="content"></textarea>
       <br> Name:
       <br>
-      <input ng-model="name" required type="text" name="name" />
-      <br>
-      <button id="submit" ng-click="createPost(title+content+name)" ng-disabled="newPostForm.$invalid">Submit Post</button>
+      <button id="submit" ng-click="createPost(title+content)" ng-disabled="newPostForm.$invalid">Submit Post</button>
     </form>
   </div>
 </body>
