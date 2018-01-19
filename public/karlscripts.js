@@ -25,12 +25,7 @@ mainapp.controller('mainCtrl', function ($scope) {
             // Otherwise ignore if this is a token refresh.  
             // Update the current user UID.  
             currentUid = user.uid;
-<<<<<<< HEAD
             $scope.logintext = user.displayName;
-=======
-            $scope.logintext = '<h1> Congrats ' + user.displayName + ', you are done! </h1>' + user.email + ' <h2> Now get back to what you love building. </h2> <h2> Need to verify your email address or reset your password? Firebase can handle all of that for you using the email you provided: ' + user.email + '. <h/2>';
-            console.log(logintext);
->>>>>>> 39c9ce61074454e23e723280dec33a993cff9747
         } else {
             // Sign out operation. Reset the current user UID.  
             currentUid = null;
