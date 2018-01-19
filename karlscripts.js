@@ -22,19 +22,29 @@ mainapp.controller('inputCtrl', function ($scope) {
             content: $scope.content,
             name: $scope.name
         }
+        console.log(blogpost);
         ref.push(blogpost);
+
+        $scope.name = "";
+        $scope.content = "";
+        $scope.title = "";
     }
+
 });
 
-mainapp.controller('postCtrl', function ($scope) {
+mainapp.controller('postCtrl', function ($scope, $sce) {
     $scope.loadPosts = function () {
         var ref = database.ref('posts');
         ref.on("value", function (snapshot) {
             snapshot.forEach(function (childSnapShot) {
                 var childData = childSnapShot.val();
+
+                var fixedContent = childData.content;
+                $sce.trustAsHtml(fixedContent);
+
                 var blogPost = {
                     title: childData.title,
-                    content: childData.content,
+                    content: fixedContent,
                     name: childData.name
                 }
                 $scope.postsList.push(blogPost);
@@ -42,35 +52,36 @@ mainapp.controller('postCtrl', function ($scope) {
 
         })
     }
+
 });
 
-mainapp.controller('fixCtrl', function($scope, resultsFactory) {
-  
-    $scope.results = [{txt: 'Loading...'}];
+mainapp.controller('fixCtrl', function ($scope, resultsFactory) {
+
+    $scope.results = [{ txt: 'Loading...' }];
     resultsFactory.all().then(
-      function(res){
-        $scope.results = res;
-      },
-      function(err){
-        console.error(err);
-      }
+        function (res) {
+            $scope.results = res;
+        },
+        function (err) {
+            console.error(err);
+        }
     );
-  })
-  
-  mainapp.factory('resultsFactory', function($http, $timeout, $q) { 
-    var results = {};  
-    
-    function _all(){
-      var d = $q.defer();
-        $timeout(function(){
-              d.resolve($scope.postsList);
-       }, 1000); 
-    
-      return d.promise;       
+})
+
+mainapp.factory('resultsFactory', function ($http, $timeout, $q) {
+    var results = {};
+
+    function _all() {
+        var d = $q.defer();
+        $timeout(function () {
+            d.resolve(mainapp.postsList);
+        }, 1000);
+
+        return d.promise;
     }
-    
+
     results.all = _all;
     return results;
-  });
+});
 
 

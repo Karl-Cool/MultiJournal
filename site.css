@@ -22,7 +22,7 @@ textarea.ng-invalid {
     float: left;
 }
 .blogContent{
-    text-align: center;
+    text-align: left;
 }
 .blogName{
     font: italic 12px/30px Georgia, serif;

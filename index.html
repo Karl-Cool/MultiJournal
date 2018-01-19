@@ -13,17 +13,19 @@
 
 <body>
     <div ng-controller="inputCtrl">
-        Title:
-        <br>
-        <input ng-model="title" required type="text" name="title" />
-        <br> Content:
-        <br>
-        <textarea ng-model="content" required rows="4" cols="40" name="content"></textarea>
-        <br> Name:
-        <br>
-        <input ng-model="name" required type="text" name="name" />
-        <br>
-        <button ng-click="createPost(title+content+name)">Submit Post</button>
+        <form name="newPostForm">
+            Title:
+            <br>
+            <input ng-model="title" required type="text" name="title" />
+            <br> Content:
+            <br>
+            <textarea ng-model="content" required rows="4" cols="40" name="content"></textarea>
+            <br> Name:
+            <br>
+            <input ng-model="name" required type="text" name="name" />
+            <br>
+            <button id="submit" ng-click="createPost(title+content+name)" ng-disabled="newPostForm.$invalid">Submit Post</button>
+        </form>
     </div>
     <div ng-controller="postCtrl" data-ng-init="loadPosts()">
         <!-- <button ng-click="loadPosts()">Load Posts</button> -->
@@ -33,7 +35,7 @@
                 <div class="whiteTransparent">
                     <div class="blogTitle">{{post.title}}</div>
                     <br>
-                    <div class="blogContent">{{post.content}}</div>
+                    <div class="blogContent"><pre>{{post.content}}</pre></div>
                     <br>
                     <div class="blogName">{{post.name}}</div>
                     <br>
@@ -48,7 +50,11 @@
                 <div class="whiteTransparent">
                     <div class="blogTitle">{{res.title}}</div>
                     <br>
-                    <div class="blogContent">{{res.content}}</div>
+                    <div class="blogContent">
+                        <pre>
+                            {{res.content}}
+                        </pre>
+                    </div>
                     <br>
                     <div class="blogName">{{res.name}}</div>
                     <br>
