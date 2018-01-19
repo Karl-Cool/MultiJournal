@@ -13,20 +13,18 @@
 </head>
 
 <body>
-    <input ng-model="logintext" />
-
     <div ng-controller="postCtrl" data-ng-init="loadPosts()">
         <br>
         <div ng-repeat="post in postsList">
             <div class="well col-md-6 col-md-offset-3">
                 <div>
-                    <div>{{post.title}}</div>
+                    <div class="blogTitle">{{post.title}}</div>
                     <br>
                     <div>
                         <pre>{{post.content}}</pre>
                     </div>
                     <br>
-                    <div>//{{post.name}}</div>
+                    <div class="blogName">//{{post.name}}</div>
                     <br>
                 </div>
             </div>
