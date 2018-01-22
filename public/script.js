@@ -55,7 +55,7 @@ mainapp.controller('logOutCtrl', function ($scope) {
         firebase.auth().signOut().then(function () {
             console.log("Sign out successful!");
             currentUid = null;
-            window.location.href = "index.html";
+            window.location.href = "login.html";
         }, function (error) {
             console.log("Error with logout");
         });
@@ -128,4 +128,10 @@ mainapp.factory('resultsFactory', function ($http, $timeout, $q) {
     results.all = _all;
     return results;
 });
+
+mainapp.controller('blogFeedCtrl', ['$scope', function ($scope) {
+    $scope.clicked = function() {
+        window.location.href = './index.html';
+    }
+}]);
 
