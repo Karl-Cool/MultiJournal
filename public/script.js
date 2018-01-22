@@ -80,11 +80,13 @@ mainapp.controller('inputCtrl', function ($scope) {
     $scope.createPost = function () {
         var ref = database.ref('posts');
 
+        var date = new Date.now();
+
         var blogpost = {
             title: $scope.title,
             content: $scope.content,
             name: userName,
-            date: { type: Date, default: Date.now } 
+            date: date
         }
         console.log(blogpost);
         ref.push(blogpost);
