@@ -34,9 +34,12 @@ mainapp.controller('mainCtrl', function ($scope) {
             $scope.logintext = user.displayName;
             $scope.logintext2 = user.displayName;
             userName = user.displayName;
-            if (currentUid != "B6mtlk0aVXMsWAFimNFAnN7oP582" || currentUid != "NyfMbBsWopTdiQBnslZqGWs60b13" || currentUid != "htvpaVJZNVfPwmIe46M0Ab4OPqj1") {
+            if ((currentUid == "B6mtlk0aVXMsWAFimNFAnN7oP582") || (currentUid == "NyfMbBsWopTdiQBnslZqGWs60b13") || (currentUid == "htvpaVJZNVfPwmIe46M0Ab4OPqj1")) {
+                console.log("Antingen har Karl, Axel eller Philip loggat in :) KUL!");
+            }
+            else{
                 logOut();
-                console.log("user id = null");
+                console.log("LOL gtfo");
                 window.location.href = "index.html";
             }
         } else {
