@@ -17,20 +17,20 @@ var userName = "";
 
 mainapp.controller('mainCtrl', function ($scope) {
     $scope.postsList = [];
-    $scope.checkAuth = function () {
-        if(currentUid != "B6mtlk0aVXMsWAFimNFAnN7oP582" || currentUid != "NyfMbBsWopTdiQBnslZqGWs60b13" || currentUid != "htvpaVJZNVfPwmIe46M0Ab4OPqj1"){
-            logOut();
-            console.log("user id = null");
-            window.location.href = "index.html";
-        }
-    },
+
     firebase.auth().onAuthStateChanged(function (user) {
         if (user && user.uid != currentUid) {
             currentUid = user.uid;
             $scope.logintext = user.displayName;
             $scope.logintext2 = user.displayName;
             userName = user.displayName;
-            checkAuth();
+            $scope.checkAuth = function () {
+                if(currentUid != "B6mtlk0aVXMsWAFimNFAnN7oP582" || currentUid != "NyfMbBsWopTdiQBnslZqGWs60b13" || currentUid != "htvpaVJZNVfPwmIe46M0Ab4OPqj1"){
+                    logOut();
+                    console.log("user id = null");
+                    window.location.href = "index.html";
+                }
+            }
         } else {
             currentUid = null;
             console.log("no user signed in");
