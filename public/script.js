@@ -108,8 +108,6 @@ mainapp.controller('postCtrl', function ($scope, $sce) {
                 var fixedContent = childData.content;
                 $sce.trustAsHtml(fixedContent);
 
-                
-
                 var blogPost = {
                     title: childData.title,
                     content: fixedContent,
