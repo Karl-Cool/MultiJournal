@@ -77,7 +77,8 @@ mainapp.controller('inputCtrl', function ($scope) {
         var blogpost = {
             title: $scope.title,
             content: $scope.content,
-            name: userName
+            name: userName,
+            date: new Date.now
         }
         console.log(blogpost);
         ref.push(blogpost);
@@ -99,10 +100,13 @@ mainapp.controller('postCtrl', function ($scope, $sce) {
                 var fixedContent = childData.content;
                 $sce.trustAsHtml(fixedContent);
 
+                
+
                 var blogPost = {
                     title: childData.title,
                     content: fixedContent,
-                    name: childData.name
+                    name: childData.name,
+                    date: childData.date
                 }
                 $scope.postsList.push(blogPost);
             });
