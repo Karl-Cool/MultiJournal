@@ -24,19 +24,17 @@ mainapp.controller('mainCtrl', function ($scope) {
             $scope.logintext = user.displayName;
             $scope.logintext2 = user.displayName;
             userName = user.displayName;
-            $scope.checkAuth = function () {
-                if(currentUid != "B6mtlk0aVXMsWAFimNFAnN7oP582" || currentUid != "NyfMbBsWopTdiQBnslZqGWs60b13" || currentUid != "htvpaVJZNVfPwmIe46M0Ab4OPqj1"){
-                    logOut();
-                    console.log("user id = null");
-                    window.location.href = "index.html";
-                }
+            if (currentUid != "B6mtlk0aVXMsWAFimNFAnN7oP582" || currentUid != "NyfMbBsWopTdiQBnslZqGWs60b13" || currentUid != "htvpaVJZNVfPwmIe46M0Ab4OPqj1") {
+                logOut();
+                console.log("user id = null");
+                window.location.href = "index.html";
             }
         } else {
             currentUid = null;
             console.log("no user signed in");
             console.log("user id = null");
 
-            if(window.location.href == "https://multijournal-1f8ab.firebaseapp.com/writePost.html") { 
+            if (window.location.href == "https://multijournal-1f8ab.firebaseapp.com/writePost.html") {
                 console.log("Sidan stämmer")
                 window.location.href = "index.html";
             }
@@ -141,7 +139,7 @@ mainapp.factory('resultsFactory', function ($http, $timeout, $q) {
 });
 
 mainapp.controller('blogFeedCtrl', ['$scope', function ($scope) {
-    $scope.clicked = function() {
+    $scope.clicked = function () {
         window.location.href = './index.html';
     }
 }]);
