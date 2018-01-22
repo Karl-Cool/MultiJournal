@@ -6,7 +6,6 @@ var config = {
     storageBucket: "multijournal-1f8ab.appspot.com",
     messagingSenderId: "1075543197778"
 };
-
 firebase.initializeApp(config);
 var database = firebase.database();
 var mainapp = angular.module('mainapp', []);
@@ -15,18 +14,32 @@ var storageRef = storage.ref();
 var currentUid = null;
 var userName = "";
 
+function logOut() {
+    firebase.auth().signOut().then(function () {
+        console.log("Sign out successful!");
+        currentUid = null;
+        window.location.href = "login.html";
+    }, function (error) {
+        console.log("Error with logout");
+    });
+}
+
 mainapp.controller('mainCtrl', function ($scope) {
     $scope.postsList = [];
 
     firebase.auth().onAuthStateChanged(function (user) {
+
         if (user && user.uid != currentUid) {
             currentUid = user.uid;
             $scope.logintext = user.displayName;
             $scope.logintext2 = user.displayName;
             userName = user.displayName;
-            if (currentUid != "B6mtlk0aVXMsWAFimNFAnN7oP582" || currentUid != "NyfMbBsWopTdiQBnslZqGWs60b13" || currentUid != "htvpaVJZNVfPwmIe46M0Ab4OPqj1") {
+            if ((currentUid == "B6mtlk0aVXMsWAFimNFAnN7oP582") || (currentUid == "NyfMbBsWopTdiQBnslZqGWs60b13") || (currentUid == "htvpaVJZNVfPwmIe46M0Ab4OPqj1")) {
+                console.log("Antingen har Karl, Axel eller Philip loggat in :) KUL!");
+            }
+            else {
                 logOut();
-                console.log("user id = null");
+                console.log("LOL gtfo");
                 window.location.href = "index.html";
             }
         } else {
@@ -39,15 +52,7 @@ mainapp.controller('mainCtrl', function ($scope) {
                 window.location.href = "index.html";
             }
         }
-        $scope.logOut = function () {
-            firebase.auth().signOut().then(function () {
-                console.log("Sign out successful!");
-                currentUid = null;
-                window.location.href = "login.html";
-            }, function (error) {
-                console.log("Error with logout");
-            });
-        }
+
     });
 
     var imagesRef = storageRef.child('Blogphotos');

@@ -3,7 +3,6 @@ input.ng-invalid {
     border-width: 1px;
 }
 input {
-
     margin-bottom: 4px;
 }
 
@@ -27,7 +26,6 @@ textarea.ng-invalid {
 
 .blogContent{
     text-align: left;
-    max-width: 280px;
     overflow-x: hidden !important;
 }
 
@@ -35,6 +33,8 @@ pre {
     display: flex;
     white-space: normal;
     word-break: break-all;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 1px;
 }
 
 .blogName{
