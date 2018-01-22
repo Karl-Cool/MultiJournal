@@ -79,11 +79,12 @@ mainapp.controller('logOutCtrl', function ($scope) {
 mainapp.controller('inputCtrl', function ($scope) {
     $scope.createPost = function () {
         var ref = database.ref('posts');
+        var date = new Date.now;
         var blogpost = {
             title: $scope.title,
             content: $scope.content,
             name: userName,
-            date: new Date.now
+            date: date
         }
         console.log(blogpost);
         ref.push(blogpost);
