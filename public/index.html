@@ -16,7 +16,7 @@
 <body>
     <div ng-controller="postCtrl" data-ng-init="loadPosts()">
         <br>
-        <div ng-repeat="post in postsList">
+        <div ng-repeat="post in postsList | orderBy:'-'">
             <div class="well col-md-6 col-md-offset-3">
                 <div>
                     <div>{{post.title}}</div>
