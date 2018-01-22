@@ -18,7 +18,8 @@ var userName = "";
 mainapp.controller('mainCtrl', function ($scope) {
     $scope.postsList = [];
     $scope.checkAuth = function () {
-        if(currentUid == null){
+        if(currentUid != "B6mtlk0aVXMsWAFimNFAnN7oP582" || currentUid != "NyfMbBsWopTdiQBnslZqGWs60b13" || currentUid != "htvpaVJZNVfPwmIe46M0Ab4OPqj1"){
+            logOut();
             console.log("user id = null");
             window.location.href = "index.html";
         }
@@ -29,6 +30,7 @@ mainapp.controller('mainCtrl', function ($scope) {
             $scope.logintext = user.displayName;
             $scope.logintext2 = user.displayName;
             userName = user.displayName;
+            checkAuth();
         } else {
             currentUid = null;
             console.log("no user signed in");
@@ -38,6 +40,15 @@ mainapp.controller('mainCtrl', function ($scope) {
                 console.log("Sidan stämmer")
                 window.location.href = "index.html";
             }
+        }
+        $scope.logOut = function () {
+            firebase.auth().signOut().then(function () {
+                console.log("Sign out successful!");
+                currentUid = null;
+                window.location.href = "login.html";
+            }, function (error) {
+                console.log("Error with logout");
+            });
         }
     });
 
