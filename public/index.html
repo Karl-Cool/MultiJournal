@@ -8,20 +8,22 @@
     <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.js"></script>
     <script src="script.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"></link>
     <link rel="stylesheet" href="site.css"></link>
 </head>
 
 <body>
+    <input ng-model="logintext" />
+
     <div ng-controller="postCtrl" data-ng-init="loadPosts()">
         <br>
         <div ng-repeat="post in postsList">
-            <div class="well col-md-6 col-md-offset-3">
-                <div>
+            <div class="blogPost alert alert-primary">
+                <div class="whiteTransparent">
                     <div class="blogTitle">{{post.title}}</div>
                     <br>
-                    <div>
-                        <pre>{{post.content}}</pre>
+                    <div class="blogContent">
+                        <pre wi>{{post.content}}</pre>
                     </div>
                     <br>
                     <div class="blogName">//{{post.name}}</div>
@@ -33,7 +35,7 @@
     </div>
     <div ng-controller="fixCtrl">
         <div ng-repeat="res in results">
-            <div ng-if="blogpostdiv = false" class="well">
+            <div ng-if="blogpostdiv = false" class="blogPost alert alert-primary">
                 <div class="whiteTransparent">
                     <div class="blogTitle">{{res.title}}</div>
                     <br>

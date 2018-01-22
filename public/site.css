@@ -29,6 +29,7 @@ textarea.ng-invalid {
     text-align: left;
     max-width: 280px;
     overflow-x: hidden !important;
+    background-color: blue;
 }
 
 pre {
