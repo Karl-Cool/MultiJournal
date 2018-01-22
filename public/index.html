@@ -13,17 +13,16 @@
 </head>
 
 <body>
-    <input ng-model="logintext" />
-
+    <div class="container">
     <div ng-controller="postCtrl" data-ng-init="loadPosts()">
         <br>
         <div ng-repeat="post in postsList">
-            <div class="blogPost alert alert-primary">
-                <div class="whiteTransparent">
+            <div class="well col-md-6 col-md-offset-3">
+                <div>
                     <div class="blogTitle">{{post.title}}</div>
                     <br>
-                    <div class="blogContent">
-                        <pre wi>{{post.content}}</pre>
+                    <div>
+                        <pre>{{post.content}}</pre>
                     </div>
                     <br>
                     <div class="blogName">//{{post.name}}</div>
@@ -35,7 +34,7 @@
     </div>
     <div ng-controller="fixCtrl">
         <div ng-repeat="res in results">
-            <div ng-if="blogpostdiv = false" class="blogPost alert alert-primary">
+            <div ng-if="blogpostdiv = false" class="well">
                 <div class="whiteTransparent">
                     <div class="blogTitle">{{res.title}}</div>
                     <br>
@@ -51,6 +50,7 @@
             </div>
         </div>
 
+    </div>
     </div>
 </body>
 
