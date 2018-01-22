@@ -19,13 +19,22 @@ mainapp.controller('mainCtrl', function ($scope) {
     $scope.postsList = [];
 
     firebase.auth().onAuthStateChanged(function (user) {
+        $scope.logOut = function () {
+            firebase.auth().signOut().then(function () {
+                console.log("Sign out successful!");
+                currentUid = null;
+                window.location.href = "login.html";
+            }, function (error) {
+                console.log("Error with logout");
+            });
+        }
         if (user && user.uid != currentUid) {
             currentUid = user.uid;
             $scope.logintext = user.displayName;
             $scope.logintext2 = user.displayName;
             userName = user.displayName;
             if (currentUid != "B6mtlk0aVXMsWAFimNFAnN7oP582" || currentUid != "NyfMbBsWopTdiQBnslZqGWs60b13" || currentUid != "htvpaVJZNVfPwmIe46M0Ab4OPqj1") {
-                $scope.logOut();
+                logOut();
                 console.log("user id = null");
                 window.location.href = "index.html";
             }
@@ -39,15 +48,7 @@ mainapp.controller('mainCtrl', function ($scope) {
                 window.location.href = "index.html";
             }
         }
-        $scope.logOut = function () {
-            firebase.auth().signOut().then(function () {
-                console.log("Sign out successful!");
-                currentUid = null;
-                window.location.href = "login.html";
-            }, function (error) {
-                console.log("Error with logout");
-            });
-        }
+
     });
 
     var imagesRef = storageRef.child('Blogphotos');
