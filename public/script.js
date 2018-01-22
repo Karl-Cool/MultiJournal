@@ -25,7 +25,7 @@ mainapp.controller('mainCtrl', function ($scope) {
             $scope.logintext2 = user.displayName;
             userName = user.displayName;
             if (currentUid != "B6mtlk0aVXMsWAFimNFAnN7oP582" || currentUid != "NyfMbBsWopTdiQBnslZqGWs60b13" || currentUid != "htvpaVJZNVfPwmIe46M0Ab4OPqj1") {
-                logOut();
+                $scope.logOut();
                 console.log("user id = null");
                 window.location.href = "index.html";
             }
