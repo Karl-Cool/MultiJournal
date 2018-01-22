@@ -6,7 +6,6 @@ var config = {
     storageBucket: "multijournal-1f8ab.appspot.com",
     messagingSenderId: "1075543197778"
 };
-
 firebase.initializeApp(config);
 var database = firebase.database();
 var mainapp = angular.module('mainapp', []);
@@ -15,19 +14,21 @@ var storageRef = storage.ref();
 var currentUid = null;
 var userName = "";
 
+function logOut() {
+    firebase.auth().signOut().then(function () {
+        console.log("Sign out successful!");
+        currentUid = null;
+        window.location.href = "login.html";
+    }, function (error) {
+        console.log("Error with logout");
+    });
+}
+
 mainapp.controller('mainCtrl', function ($scope) {
     $scope.postsList = [];
 
     firebase.auth().onAuthStateChanged(function (user) {
-        $scope.logOut = function () {
-            firebase.auth().signOut().then(function () {
-                console.log("Sign out successful!");
-                currentUid = null;
-                window.location.href = "login.html";
-            }, function (error) {
-                console.log("Error with logout");
-            });
-        }
+
         if (user && user.uid != currentUid) {
             currentUid = user.uid;
             $scope.logintext = user.displayName;
