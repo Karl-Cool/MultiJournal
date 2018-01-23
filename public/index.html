@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html ng-app="mainapp" ng-controller="mainCtrl">
+<html>
 
 <head>
     <meta charset="utf-8">
     <title>MultiJournal</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.js"></script>
     <script src="script.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
@@ -13,8 +17,9 @@
     <link rel="stylesheet" href="site.css"></link>
 </head>
 
-<body>
-    <div ng-controller="postCtrl" data-ng-init="loadPosts()">
+<body ng-app="mainapp" ng-controller="mainCtrl">
+    <p ng-model="complete"></p>
+    <div ng-controller="postCtrl" ng-model="postsdiv" ng-init="loadPosts()">
         <br>
         <div ng-repeat="post in postsList">
             <div class="well col-md-6 col-md-offset-3">
@@ -26,25 +31,6 @@
                     </div>
                     <br>
                     <div class="blogName">//{{post.name}}</div>
-                    <br>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div ng-controller="fixCtrl">
-        <div ng-repeat="res in results">
-            <div ng-if="blogpostdiv = false" class="well">
-                <div class="well col-md-6 col-md-offset-3">
-                    <div>{{res.title}}</div>
-                    <br>
-                    <div class="blogContent">
-                        <pre>
-                            {{res.content}}
-                        </pre>
-                    </div>
-                    <br>
-                    <div class="blogName">{{res.name}}</div>
                     <br>
                 </div>
             </div>

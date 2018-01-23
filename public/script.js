@@ -1,3 +1,16 @@
+/* var database = firebase.database();
+var mainapp = angular.module('mainapp', []);
+var currentUid = null;
+var userName = "";
+function logOut() {
+    firebase.auth().signOut().then(function () {
+        console.log("Sign out successful!");
+        currentUid = null;
+        window.location.href = "login.html";
+    }, function (error) {
+        console.log("Error with logout");
+    });
+} */
 var config = {
     apiKey: "AIzaSyD1iQ0OP8z-uTe6snVy9Tg82nIZ_4uMshs",
     authDomain: "multijournal-1f8ab.firebaseapp.com",
@@ -8,144 +21,143 @@ var config = {
 };
 firebase.initializeApp(config);
 var database = firebase.database();
-var mainapp = angular.module('mainapp', []);
-var storage = firebase.app().storage("gs://multijournal-1f8ab.appspot.com/");
-var storageRef = storage.ref();
 var currentUid = null;
 var userName = "";
+var postId = "noPostMade";
 
-function logOut() {
-    firebase.auth().signOut().then(function () {
-        console.log("Sign out successful!");
-        currentUid = null;
-        window.location.href = "login.html";
-    }, function (error) {
-        console.log("Error with logout");
-    });
-}
-
-mainapp.controller('mainCtrl', function ($scope) {
-    $scope.postsList = [];
-
-    firebase.auth().onAuthStateChanged(function (user) {
-
-        if (user && user.uid != currentUid) {
-            currentUid = user.uid;
-            $scope.logintext = user.displayName;
-            $scope.logintext2 = user.displayName;
-            userName = user.displayName;
-            if ((currentUid == "B6mtlk0aVXMsWAFimNFAnN7oP582") || (currentUid == "NyfMbBsWopTdiQBnslZqGWs60b13") || (currentUid == "htvpaVJZNVfPwmIe46M0Ab4OPqj1")) {
-                console.log("Antingen har Karl, Axel eller Philip loggat in :) KUL!");
-            }
-            else {
-                logOut();
-                console.log("LOL gtfo");
-                window.location.href = "index.html";
-            }
-        } else {
-            currentUid = null;
-            console.log("no user signed in");
-            console.log("user id = null");
-
-            if (window.location.href == "https://multijournal-1f8ab.firebaseapp.com/writePost.html") {
-                console.log("Sidan stämmer")
-                window.location.href = "index.html";
-            }
-        }
-
-    });
-
-    var imagesRef = storageRef.child('Blogphotos');
-    var fileName = 'firstday.jpg';
-    var spaceRef = imagesRef.child(fileName);
-    var imgurl = spaceRef.getDownloadURL().then(function (url) {
-        console.log(url);
-        //document.querySelector('img').src = url;
-    })
-});
-
-mainapp.controller('logOutCtrl', function ($scope) {
-    $scope.logOut = function () {
-        firebase.auth().signOut().then(function () {
-            console.log("Sign out successful!");
-            currentUid = null;
-            window.location.href = "login.html";
-        }, function (error) {
-            console.log("Error with logout");
-        });
-    }
-});
-
-mainapp.controller('inputCtrl', function ($scope) {
-    $scope.createPost = function () {
-        var ref = database.ref('posts');
-        var blogpost = {
-            title: $scope.title,
-            content: $scope.content,
-            name: userName
-        }
-        console.log(blogpost);
-        ref.push(blogpost);
-
-        $scope.content = "";
-        $scope.title = "";
-
-        window.location.href = "index.html";
-    }
-});
-
-mainapp.controller('postCtrl', function ($scope, $sce) {
-    $scope.loadPosts = function () {
-        var ref = database.ref('posts');
-        ref.on("value", function (snapshot) {
-            snapshot.forEach(function (childSnapShot) {
-                var childData = childSnapShot.val();
-
-                var fixedContent = childData.content;
-                $sce.trustAsHtml(fixedContent);
-
-                var blogPost = {
-                    title: childData.title,
-                    content: fixedContent,
-                    name: childData.name
-                }
-                $scope.postsList.push(blogPost);
-            });
+(function () {
+    angular
+        .module('mainapp', ['firebase'])
+        .controller('testCtrl', function ($firebaseObject) {
+            const rootRef = firebase.database().ref().child('angular');
+            const ref = rootRef.child('object');
+            this.object = $firebaseObject(ref);
         })
-    }
-});
+        .controller('mainCtrl', function ($scope) {
+            $scope.postsList = [];
+            firebase.auth().onAuthStateChanged(function (user) {
 
-mainapp.controller('fixCtrl', function ($scope, resultsFactory) {
+                if (user && user.uid != currentUid) {
+                    currentUid = user.uid;
+                    $scope.logintext = user.displayName;
+                    $scope.logintext2 = user.displayName;
+                    userName = user.displayName;
+                    if ((currentUid == "B6mtlk0aVXMsWAFimNFAnN7oP582") || (currentUid == "NyfMbBsWopTdiQBnslZqGWs60b13") || (currentUid == "htvpaVJZNVfPwmIe46M0Ab4OPqj1")) {
+                        console.log("Antingen har Karl, Axel eller Philip loggat in :) KUL!");
+                    }
+                    else {
+                        logOut();
+                        console.log("LOL gtfo");
+                        window.location.href = "index.html";
+                    }
+                } else {
+                    currentUid = null;
+                    console.log("no user signed in");
+                    console.log("user id = null");
 
-    $scope.results = [{ txt: 'Loading...' }];
-    resultsFactory.all().then(
-        function (res) {
-            $scope.results = res;
-        },
-        function (err) {
-            console.error(err);
-        }
-    );
-})
+                    if (window.location.href == "https://multijournal-1f8ab.firebaseapp.com/writePost.html") {
+                        console.log("Sidan stämmer")
+                        window.location.href = "index.html";
+                    }
+                }
 
-mainapp.factory('resultsFactory', function ($http, $timeout, $q) {
-    var results = {};
+            })
+        })
+        .controller('logOutCtrl', function ($scope) {
+            $scope.logOut = function () {
+                firebase.auth().signOut().then(function () {
+                    console.log("Sign out successful!");
+                    currentUid = null;
+                    window.location.href = "login.html";
+                }, function (error) {
+                    console.log("Error with logout");
+                });
+            }
+        })
+        .controller('inputCtrl', function ($scope) {
+            var database = firebase.database();
+            var currentUid = null;
+            var userName = "";
+            $scope.createPost = function () {
+                var ref = database.ref('posts');
+                var blogpost = {
+                    title: $scope.title,
+                    content: $scope.content,
+                    name: userName
+                }
 
-    function _all() {
-        var d = $q.defer();
-        $timeout(function () {
-            d.resolve(mainapp.postsList);
-        }, 2000);
-        return d.promise;
-    }
+                console.log(blogpost);
+                var newPostID = ref.push(blogpost);
+                console.log(newPostID.key);
+                postId = newPostID.key;
+                $scope.content = "";
+                $scope.title = "";
 
-    results.all = _all;
-    return results;
-});
+                // window.location.href = "index.html";
+            }
+        })
+        .controller('postCtrl', function ($scope, $sce, $firebaseObject, $q, $timeout) {
+            $scope.loadPosts = function () {
+                var ref = database.ref('posts');
+                ref.on("value", function (snapshot) {
+                    snapshot.forEach(function (childSnapShot) {
+                        var childData = childSnapShot.val();
+                        var fixedContent = childData.content;
+                        $sce.trustAsHtml(fixedContent);
 
-mainapp.controller('blogFeedCtrl', ['$scope', function ($scope) {
-    $scope.clicked = function () {
-        window.location.href = './index.html';
-    }
-}]);
+                        var blogPost = {
+                            title: childData.title,
+                            content: fixedContent,
+                            name: childData.name
+                        }
+                        $scope.postsList.push(blogPost);
+                    }
+                    );
+                    $scope.$apply();
+                })
+            };
+        })
+       
+        .controller('blogFeedCtrl', ['$scope', function ($scope) {
+            $scope.clicked = function () {
+                window.location.href = './index.html';
+            }
+        }])
+        .controller('uploadCtrl', function ($scope) {
+            var uploader = document.getElementById('uploader'),
+                imageUrl,
+                fileButton = document.getElementById('fileButton');
 
+            fileButton.addEventListener('change', function (e) {
+
+                var file = e.target.files[0];
+
+                var storageRef = firebase.storage().ref('images/' + postId + "/" + file.name);
+
+
+                var task = storageRef.put(file);
+
+                task.on('state_changed',
+                    function progress(snapshot) {
+                        var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                        uploader.value = percentage;
+                        if (percentage == 100) {
+                            storageRef.getDownloadURL().then(function (url) {
+                                imageUrl = url;
+                                console.log(imageUrl);
+                            });
+                        }
+                    },
+                    function error(err) {
+
+                    },
+                    function complete() {
+
+                    }
+                )
+                console.log("uploaded");
+                console.log(imageUrl);
+
+            })
+        })
+}());

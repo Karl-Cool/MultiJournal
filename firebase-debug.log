@@ -1,0 +1,26 @@
+[debug] [2018-01-23T08:42:51.843Z] ----------------------------------------------------------------------
+[debug] [2018-01-23T08:42:51.845Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\QuiZzYy\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-01-23T08:42:51.845Z] CLI Version:   3.17.1
+[debug] [2018-01-23T08:42:51.845Z] Platform:      win32
+[debug] [2018-01-23T08:42:51.845Z] Node Version:  v8.9.4
+[debug] [2018-01-23T08:42:51.846Z] Time:          Tue Jan 23 2018 09:42:51 GMT+0100 (Västeuropa, normaltid)
+[debug] [2018-01-23T08:42:51.846Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-01-23T08:42:51.871Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-01-23T08:42:51.872Z] > authorizing via signed-in user
+[debug] [2018-01-23T08:42:51.874Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-01-23T08:42:51.875Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/4cAi7U7fcdx1eH2K8zd-gQR1kzHnbyA1bBaDXuKJ5ns',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Tue Jan 23 2018 09:42:51 GMT+0100 (Västeuropa, normaltid)
+[debug] [2018-01-23T08:42:52.034Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-23T08:42:52.046Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/multijournal-1f8ab  
+  
+ Tue Jan 23 2018 09:42:52 GMT+0100 (Västeuropa, normaltid)
+[debug] [2018-01-23T08:42:52.784Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-23T08:42:52.785Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/multijournal-1f8ab/tokens  
+  
+ Tue Jan 23 2018 09:42:52 GMT+0100 (Västeuropa, normaltid)
