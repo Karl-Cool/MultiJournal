@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="mainapp" ng-controller="mainCtrl">
 
 <head>
     <meta charset="utf-8">
@@ -23,9 +23,30 @@
         <i class="fa fa-cog" aria-hidden="true"></i>
     </a>
 
+    <div ng-controller="logOutCtrl" class="well col-md-6 col-md-offset-3">
+        <button ng-click="logOut()">LogOut</button>
+    </div>
+
+    <div ng-controller="inputCtrl" class="well col-md-6 col-md-offset-3">
+        <div class="well col-md-6 col-md-offset-3">
+            <form name="newPostForm">
+                Title:
+                <input ng-model="title" required type="text" name="title" /> Content:
+                <textarea ng-model="content" required rows="4" cols="40" name="content"></textarea>
+                <button id="submit" ng-click="createPost(title+content)" ng-disabled="newPostForm.$invalid">Submit Post</button>
+            </form>
+        </div>
+        <div ng-controller='uploadCtrl'>
+            <progress value="0" max="100" id="uploader">0%</progress>
+            <br>
+            <br>
+            <input type="file" value="upload" id="fileButton" />
+        </div>
+    </div>
+
     <div ng-controller="postCtrl" data-ng-init="loadPosts()">
         <br>
-        <div ng-repeat="post in postsList">
+        <div ng-repeat="post in postsList | orderBy:'-'">
             <div class="well col-md-6 col-md-offset-3">
                 <div>
                     <div>{{post.title}}</div>

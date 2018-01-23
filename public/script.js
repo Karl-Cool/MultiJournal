@@ -28,11 +28,6 @@ var postId = "noPostMade";
 (function () {
     angular
         .module('mainapp', ['firebase'])
-        .controller('testCtrl', function ($firebaseObject) {
-            const rootRef = firebase.database().ref().child('angular');
-            const ref = rootRef.child('object');
-            this.object = $firebaseObject(ref);
-        })
         .controller('mainCtrl', function ($scope) {
             $scope.postsList = [];
             firebase.auth().onAuthStateChanged(function (user) {
@@ -80,12 +75,14 @@ var postId = "noPostMade";
             var userName = "";
             $scope.createPost = function () {
                 var ref = database.ref('posts');
+                var date = Date.now();
+
                 var blogpost = {
                     title: $scope.title,
                     content: $scope.content,
-                    name: userName
+                    name: userName,
+                    date: date
                 }
-
                 console.log(blogpost);
                 var newPostID = ref.push(blogpost);
                 console.log(newPostID.key);
@@ -93,7 +90,7 @@ var postId = "noPostMade";
                 $scope.content = "";
                 $scope.title = "";
 
-                // window.location.href = "index.html";
+                window.location.href = "indexadmin.html";
             }
         })
         .controller('postCtrl', function ($scope, $sce, $firebaseObject, $q, $timeout) {
@@ -108,7 +105,8 @@ var postId = "noPostMade";
                         var blogPost = {
                             title: childData.title,
                             content: fixedContent,
-                            name: childData.name
+                            name: childData.name,
+                            date: childData.date
                         }
                         $scope.postsList.push(blogPost);
                     }
@@ -117,10 +115,10 @@ var postId = "noPostMade";
                 })
             };
         })
-       
+
         .controller('blogFeedCtrl', ['$scope', function ($scope) {
             $scope.clicked = function () {
-                window.location.href = './index.html';
+                window.location.href = './indexAdmin.html';
             }
         }])
         .controller('uploadCtrl', function ($scope) {
@@ -133,8 +131,6 @@ var postId = "noPostMade";
                 var file = e.target.files[0];
 
                 var storageRef = firebase.storage().ref('images/' + postId + "/" + file.name);
-
-
                 var task = storageRef.put(file);
 
                 task.on('state_changed',
@@ -157,7 +153,7 @@ var postId = "noPostMade";
                 )
                 console.log("uploaded");
                 console.log(imageUrl);
-
-            })
+            }
+            );
         })
-}());
+});

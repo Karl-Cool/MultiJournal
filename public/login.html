@@ -4,7 +4,6 @@
 <head>
   <title>Login</title>
   <meta charset="UTF-8">
-</head>
 <!-- AngularJS -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
 <!-- Firebase -->
@@ -16,7 +15,7 @@
 <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
 <script type="text/javascript">  
   var uiConfig = {
-    signInSuccessUrl: 'writePost.html',
+    signInSuccessUrl: 'indexAdmin.html',
     signInOptions: [
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     ],
@@ -25,9 +24,7 @@
   var ui = new firebaseui.auth.AuthUI(firebase.auth());
   ui.start('#firebaseui-auth-container', uiConfig);  
 </script>
-
-<div></div>
-
+</head>
 <body ng-app="mainapp">
   <div id="container">
     <div id="firebaseui-auth-container"></div>
