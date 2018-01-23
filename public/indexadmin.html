@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html ng-app="mainapp" ng-controller="mainCtrl">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <title>MultiJournal</title>
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+
     <!-- AngularFire -->
     <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.js"></script>
@@ -18,7 +20,7 @@
     <link rel="stylesheet" href="site.css"></link>
 </head>
 
-<body>
+<body ng-app="retardalert" ng-controller="mainCtrl">
     <a class="btn btn-default pull-right" href="/login.html" aria-label="Settings">
         <i class="fa fa-cog" aria-hidden="true"></i>
     </a>
@@ -29,18 +31,30 @@
 
     <div ng-controller="inputCtrl" class="well col-md-6 col-md-offset-3">
         <div class="well col-md-6 col-md-offset-3">
-            <form name="newPostForm">
-                Title:
-                <input ng-model="title" required type="text" name="title" /> Content:
-                <textarea ng-model="content" required rows="4" cols="40" name="content"></textarea>
-                <button id="submit" ng-click="createPost(title+content)" ng-disabled="newPostForm.$invalid">Submit Post</button>
-            </form>
-        </div>
-        <div ng-controller='uploadCtrl'>
-            <progress value="0" max="100" id="uploader">0%</progress>
-            <br>
-            <br>
-            <input type="file" value="upload" id="fileButton" />
+            <div ng-controller='uploadCtrl'>
+                <form name="newPostForm">
+                    Title:
+                    <br>
+                    <input ng-model="title" required type="text" name="title" />
+                    <br> Content:
+                    <br>
+                    <textarea ng-model="content" required rows="4" cols="40" name="content"></textarea>
+
+                    <input class="file" type='file' id="imgSel" />
+                    <div id="textarea" contenteditable>
+                        <img contenteditable="false" ng-model="uploadedpic" id="myimg" src="{{imagePath}}" /> 
+                        Jag älskar godis
+                    </div>
+                    <button id="submit" ng-click="createPost(title+content)" ng-disabled="newPostForm.$invalid">Submit Post</button>
+                </form>
+                <br>
+                <div class="well">
+                    <progress value="0" max="100" id="uploader">0%</progress>
+                    <br>
+                    <input type="file" value="upload" id="fileButton" />
+                    <input type="text" ng-model="imageUrlDisplay" readonly="true">
+                </div>
+            </div>
         </div>
     </div>
 
