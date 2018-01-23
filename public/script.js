@@ -38,7 +38,7 @@ mainapp.controller('mainCtrl', function ($scope) {
             else {
                 logOut();
                 console.log("LOL gtfo");
-                window.location.href = "index.html";
+                window.location.href = "login.html";
             }
         } else {
             currentUid = null;
@@ -83,7 +83,7 @@ mainapp.controller('inputCtrl', function ($scope) {
         $scope.content = "";
         $scope.title = "";
 
-        window.location.href = "index.html";
+        window.location.href = "indexadmin.html";
     }
 });
 
@@ -139,7 +139,7 @@ mainapp.factory('resultsFactory', function ($http, $timeout, $q) {
 
 mainapp.controller('blogFeedCtrl', ['$scope', function ($scope) {
     $scope.clicked = function () {
-        window.location.href = './index.html';
+        window.location.href = './indexadmin.html';
     }
 }]);
 

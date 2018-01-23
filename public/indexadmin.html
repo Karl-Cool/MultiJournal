@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html ng-app="mainapp" ng-controller="mainCtrl">
+
+<head>
+    <meta charset="utf-8">
+    <title>MultiJournal</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="site.css"></link>
+</head>
+
+<body>
+    <a class="btn btn-default pull-right" href="/login.html" aria-label="Settings">
+        <i class="fa fa-cog" aria-hidden="true"></i>
+    </a>
+
+<div ng-controller="logOutCtrl" class="well col-md-6 col-md-offset-3">
+    <button ng-click="logOut()">LogOut</button>
+</div> 
+
+<div ng-controller="inputCtrl" class="well col-md-6 col-md-offset-3">
+    <div class="well col-md-6 col-md-offset-3">
+        <form name="newPostForm">
+        Title:
+        <input ng-model="title" required type="text" name="title" />
+        Content:
+        <textarea ng-model="content" required rows="4" cols="40" name="content"></textarea>
+        <button id="submit" ng-click="createPost(title+content)" ng-disabled="newPostForm.$invalid">Submit Post</button>
+        </form>
+    </div>
+</div>
+
+    <div ng-controller="postCtrl" data-ng-init="loadPosts()">
+        <br>
+        <div ng-repeat="post in postsList | orderBy:'-'">
+            <div class="well col-md-6 col-md-offset-3">
+                <div>
+                    <div>{{post.title}}</div>
+                    <br>
+                    <div class="blogContent">
+                        <pre>{{post.content}}</pre>
+                    </div>
+                    <br>
+                    <span>{{post.date | date:'dd/MM/yyyy HH:mm'}}</span>
+                    <div class="blogName">//{{post.name}}</div>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div ng-controller="fixCtrl">
+        <div ng-repeat="res in results">
+            <div ng-if="blogpostdiv = false" class="well">
+                <div class="well col-md-6 col-md-offset-3">
+                    <div>{{res.title}}</div>
+                    <br>
+                    <div class="blogContent">
+                        <pre>
+                            {{res.content}}
+                        </pre>
+                    </div>
+                    <br>
+                    <div class="blogName">{{res.name}}</div>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
