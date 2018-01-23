@@ -45,7 +45,7 @@ mainapp.controller('mainCtrl', function ($scope) {
             console.log("no user signed in");
             console.log("user id = null");
 
-            if (window.location.href == "https://multijournal-1f8ab.firebaseapp.com/writePost.html") {
+            if (window.location.href == "https://multijournal-1f8ab.firebaseapp.com/indexAdmin.html") {
                 console.log("Sidan stämmer")
                 window.location.href = "index.html";
             }
@@ -83,7 +83,7 @@ mainapp.controller('inputCtrl', function ($scope) {
         $scope.content = "";
         $scope.title = "";
 
-        window.location.href = "indexadmin.html";
+        window.location.href = "indexAdmin.html";
     }
 });
 
@@ -139,7 +139,7 @@ mainapp.factory('resultsFactory', function ($http, $timeout, $q) {
 
 mainapp.controller('blogFeedCtrl', ['$scope', function ($scope) {
     $scope.clicked = function () {
-        window.location.href = './indexadmin.html';
+        window.location.href = './indexAdmin.html';
     }
 }]);
 
